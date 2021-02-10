@@ -15,7 +15,15 @@ import world.World;
 
 public class Entity {
 	
-	public static BufferedImage MACA_EN = Game.spritesheet.getSprite(0, 16, 16, 16);
+	public static BufferedImage APPLE_EN = Game.spritesheet.getSprite(0, 16, 16, 16);
+	public static BufferedImage ENEMY1_EN = Game.spritesheet.getSprite(96, 0, 16, 16);
+	public static BufferedImage ENEMY2_EN = Game.spritesheet.getSprite(112, 0, 16, 16);
+	public static BufferedImage ENEMY3_EN = Game.spritesheet.getSprite(128, 0, 16, 16);
+	public static BufferedImage ENEMY4_EN = Game.spritesheet.getSprite(144, 0, 16, 16);
+	public static BufferedImage ENEMYGHOST1_EN = Game.spritesheet.getSprite(96, 16, 16, 16);
+	public static BufferedImage ENEMYGHOST2_EN = Game.spritesheet.getSprite(112, 16, 16, 16);
+	public static BufferedImage ENEMYGHOST3_EN = Game.spritesheet.getSprite(128, 16, 16, 16);
+	public static BufferedImage ENEMYGHOST4_EN = Game.spritesheet.getSprite(144, 16, 16, 16);
 
 	protected double x;
 	protected double y;

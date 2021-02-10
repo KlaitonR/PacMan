@@ -7,6 +7,7 @@ import javax.imageio.ImageIO;
 
 import entities.Entity;
 import entities.Apple;
+import entities.Enemy;
 import main.Game;
 
 public class World {
@@ -38,10 +39,24 @@ public class World {
 						//Player
 						Game.player.setX(xx*16);
 						Game.player.setY(yy*16);
-					}else if(pixelAtual == 0xFFFF0000) {
-						//Instanciar inimigo e adicionar a lista das entities
+					}else if(pixelAtual == 0xFFE2467F) {
+						Enemy en = new Enemy(xx*16, yy*16, 16, 16, 2, Enemy.ENEMY1_EN);
+						en.spriteGhostMode = Enemy.ENEMYGHOST1_EN;
+						Game.entities.add(en);
+					}else if(pixelAtual == 0xFF0094FF) {
+						Enemy en = new Enemy(xx*16, yy*16, 16, 16, 2, Enemy.ENEMY2_EN);
+						en.spriteGhostMode = Enemy.ENEMYGHOST2_EN;
+						Game.entities.add(en);
+					}else if(pixelAtual == 0xFF00FF21) {
+						Enemy en = new Enemy(xx*16, yy*16, 16, 16, 2, Enemy.ENEMY3_EN);
+						en.spriteGhostMode = Enemy.ENEMYGHOST3_EN;
+						Game.entities.add(en);
+					}else if(pixelAtual == 0xFFFF6A00) {
+						Enemy en = new Enemy(xx*16, yy*16, 16, 16, 2, Enemy.ENEMY4_EN);
+						en.spriteGhostMode = Enemy.ENEMYGHOST4_EN;
+						Game.entities.add(en);
 					}else if (pixelAtual == 0xFFFFE900) { //Maça
-						Apple apple = new Apple(xx*16, yy*16, 16, 16, 0, Entity.MACA_EN);
+						Apple apple = new Apple(xx*16, yy*16, 16, 16, 0, Entity.APPLE_EN);
 						Game.entities.add(apple);
 						Game.contApple++;
 					}
