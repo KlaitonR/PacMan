@@ -53,7 +53,6 @@ public class Enemy extends Entity{
 			}else {
 				ghostMode = false;
 			}
-			
 		}
 	}
 

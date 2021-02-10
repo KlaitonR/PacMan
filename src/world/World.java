@@ -6,6 +6,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import entities.Entity;
+import entities.Player;
 import entities.Apple;
 import entities.Enemy;
 import main.Game;
@@ -87,8 +88,13 @@ public class World {
 				(tiles[x4 + (y4*World.WIDTH)] instanceof WallTile));
 	}
 	
-	public static void restartGame(String level){
-		new Game();
+	public static void restartGame(){
+		Game.entities.clear();
+		Game.player = new Player(0,0,16,16,2,Game.spritesheet.getSprite(32, 0,16,16));
+		Game.entities.add(Game.player);
+		Game.contApple = 0;
+		Game.player.atlApplee = 0;
+		Game.world = new World("/level1.png");
 		return;
 	}
 	

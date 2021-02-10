@@ -32,13 +32,12 @@ public class Player extends Entity{
 			if(current instanceof Apple) {
 				if(Entity.isColidding(this, current)){
 					Game.entities.remove(i);
-//					Game.contApple--;
 					atlApplee++;
 					return;
 				}
 			}
 		}
-		
+
 	}
 	
 	public void tick(){
@@ -47,6 +46,8 @@ public class Player extends Entity{
 		
 		if(Game.contApple == Game.player.atlApplee) {
 			System.out.println("Próximo level");
+			World.restartGame();
+			return;
 		}
 		
 		depth = 1;
