@@ -98,7 +98,9 @@ public class Game extends Canvas implements Runnable,KeyListener,MouseListener,M
 			e.tick();
 		}
 
-		
+		if(player.life == 0) {
+			World.restartGame();
+		}
 		
 	}
 	

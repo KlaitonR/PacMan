@@ -10,10 +10,13 @@ public class Player extends Entity{
 	
 	public boolean right,up,left,down;
 	public BufferedImage sprite_right, sprite_left, sprite_up, sprite_down;
-	
 	public int atlApplee;
-	
 	public int lastDir = 1;
+	
+	public BufferedImage [] spriteLife;
+	public int life = 4;
+	public int hit;
+	public int maxHit = 30;
 
 	public Player(int x, int y, int width, int height,double speed,BufferedImage sprite) {
 		super(x, y, width, height,speed,sprite);
@@ -22,6 +25,12 @@ public class Player extends Entity{
 		sprite_right = Game.spritesheet.getSprite(32, 0, 16, 16);
 		sprite_up = Game.spritesheet.getSprite(64, 0, 16, 16);
 		sprite_down = Game.spritesheet.getSprite(80, 0, 16, 16);
+		
+		spriteLife = new BufferedImage [4];
+		
+		for(int i = 0; i<life; i++) {
+			spriteLife[i] = Game.spritesheet.getSprite(16, 16, 16, 16);
+		}
 		
 	}
 	
@@ -37,12 +46,31 @@ public class Player extends Entity{
 				}
 			}
 		}
-
+	}
+	
+	public void checkCollidingEnemy() {
+	
+		for(int i=0; i<Game.entities.size(); i++) {
+			Entity current = Game.entities.get(i);
+			if(current instanceof Enemy) {
+				Enemy en = (Enemy) current;
+				if(Entity.isColidding(this, current) && !en.ghostMode ){
+					hit++;
+					return;
+				}
+			}
+		}
 	}
 	
 	public void tick(){
 		
 		checkCollidingApple();
+		checkCollidingEnemy();
+		
+		if(hit == maxHit) {
+			hit = 0;
+			life--;
+		}
 		
 		if(Game.contApple == Game.player.atlApplee) {
 			System.out.println("Próximo level");
