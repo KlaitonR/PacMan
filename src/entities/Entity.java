@@ -15,6 +15,7 @@ import world.World;
 
 public class Entity {
 	
+	public static BufferedImage MACA_EN = Game.spritesheet.getSprite(0, 16, 16, 16);
 
 	protected double x;
 	protected double y;

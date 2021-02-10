@@ -5,6 +5,8 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
+import entities.Entity;
+import entities.Maca;
 import main.Game;
 
 public class World {
@@ -38,6 +40,9 @@ public class World {
 						Game.player.setY(yy*16);
 					}else if(pixelAtual == 0xFFFF0000) {
 						//Instanciar inimigo e adicionar a lista das entities
+					}else if (pixelAtual == 0xFFFFE900) { //Maça
+						Maca maca = new Maca(xx*16, yy*16, 16, 16, 0, Entity.MACA_EN);
+						Game.entities.add(maca);
 					}
 				}
 			}

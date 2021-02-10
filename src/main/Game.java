@@ -33,7 +33,6 @@ public class Game extends Canvas implements Runnable,KeyListener,MouseListener,M
 	public static final int SCALE = 2;
 	
 	private BufferedImage image;
-	
 
 	public static List<Entity> entities;
 	public static Spritesheet spritesheet;
@@ -43,6 +42,7 @@ public class Game extends Canvas implements Runnable,KeyListener,MouseListener,M
 	public UI ui;
 	
 	public Game(){
+		
 		addKeyListener(this);
 		addMouseListener(this);
 		addMouseMotionListener(this);
@@ -52,13 +52,11 @@ public class Game extends Canvas implements Runnable,KeyListener,MouseListener,M
 		
 		//Inicializando objetos.
 		spritesheet = new Spritesheet("/spritesheet.png");
-		player = new Player(0,0,16,16,1,spritesheet.getSprite(32, 0,16,16));
-		world = new World("/level1.png");
-		ui = new UI();
 		entities = new ArrayList<Entity>();
-		
+		player = new Player(0,0,16,16,2,spritesheet.getSprite(32, 0,16,16));
+		world = new World("/level1.png");
+		ui = new UI();				
 		entities.add(player);
-		
 	}
 	
 	public void initFrame(){
@@ -101,9 +99,6 @@ public class Game extends Canvas implements Runnable,KeyListener,MouseListener,M
 		
 		
 	}
-	
-
-
 	
 	public void render(){
 		BufferStrategy bs = this.getBufferStrategy();

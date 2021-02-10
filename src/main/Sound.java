@@ -3,6 +3,7 @@ package main;
 import java.applet.Applet;
 import java.applet.AudioClip;
 
+@SuppressWarnings("deprecation")
 public class Sound {
 
 	private AudioClip clip;
