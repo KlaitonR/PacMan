@@ -41,6 +41,8 @@ public class Game extends Canvas implements Runnable,KeyListener,MouseListener,M
 	
 	public UI ui;
 	
+	public static int contApple;
+	
 	public Game(){
 		
 		addKeyListener(this);

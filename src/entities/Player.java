@@ -11,6 +11,8 @@ public class Player extends Entity{
 	public boolean right,up,left,down;
 	public BufferedImage sprite_right, sprite_left, sprite_up, sprite_down;
 	
+	public int atlApplee;
+	
 	public int lastDir = 1;
 
 	public Player(int x, int y, int width, int height,double speed,BufferedImage sprite) {
@@ -23,7 +25,30 @@ public class Player extends Entity{
 		
 	}
 	
+	public void checkCollidingApple() {
+		
+		for(int i=0; i<Game.entities.size(); i++) {
+			Entity current = Game.entities.get(i);
+			if(current instanceof Apple) {
+				if(Entity.isColidding(this, current)){
+					Game.entities.remove(i);
+//					Game.contApple--;
+					atlApplee++;
+					return;
+				}
+			}
+		}
+		
+	}
+	
 	public void tick(){
+		
+		checkCollidingApple();
+		
+		if(Game.contApple == Game.player.atlApplee) {
+			System.out.println("Próximo level");
+		}
+		
 		depth = 1;
 		if(right && World.isFree((int)(x+speed),this.getY())) {
 			x+=speed;

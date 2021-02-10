@@ -6,7 +6,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import entities.Entity;
-import entities.Maca;
+import entities.Apple;
 import main.Game;
 
 public class World {
@@ -41,8 +41,9 @@ public class World {
 					}else if(pixelAtual == 0xFFFF0000) {
 						//Instanciar inimigo e adicionar a lista das entities
 					}else if (pixelAtual == 0xFFFFE900) { //Maça
-						Maca maca = new Maca(xx*16, yy*16, 16, 16, 0, Entity.MACA_EN);
-						Game.entities.add(maca);
+						Apple apple = new Apple(xx*16, yy*16, 16, 16, 0, Entity.MACA_EN);
+						Game.entities.add(apple);
+						Game.contApple++;
 					}
 				}
 			}
