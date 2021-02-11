@@ -10,13 +10,20 @@ public class Player extends Entity{
 	
 	public boolean right,up,left,down;
 	public BufferedImage sprite_right, sprite_left, sprite_up, sprite_down;
+	public BufferedImage sprite_right_eat, sprite_left_eat, sprite_up_eat, sprite_down_eat;
+	
 	public int atlApplee;
 	public int lastDir = 1;
+	public boolean moved;
 	
 	public BufferedImage [] spriteLife;
 	public int life = 4;
 	public int hit;
 	public int maxHit = 30;
+	
+	int cont;
+	int maxFrames = 6;
+	int frames;
 
 	public Player(int x, int y, int width, int height,double speed,BufferedImage sprite) {
 		super(x, y, width, height,speed,sprite);
@@ -26,11 +33,18 @@ public class Player extends Entity{
 		sprite_up = Game.spritesheet.getSprite(64, 0, 16, 16);
 		sprite_down = Game.spritesheet.getSprite(80, 0, 16, 16);
 		
+		sprite_left_eat = Game.spritesheet.getSprite(48, 16, 16, 16);
+		sprite_right_eat = Game.spritesheet.getSprite(32, 16, 16, 16);
+		sprite_up_eat = Game.spritesheet.getSprite(64, 16, 16, 16);
+		sprite_down_eat = Game.spritesheet.getSprite(80, 16, 16, 16);
+		
 		spriteLife = new BufferedImage [4];
 		
 		for(int i = 0; i<life; i++) {
 			spriteLife[i] = Game.spritesheet.getSprite(16, 16, 16, 16);
 		}
+		
+		depth = 1;
 		
 	}
 	
@@ -78,7 +92,17 @@ public class Player extends Entity{
 			return;
 		}
 		
-		depth = 1;
+		cont++;
+		if(cont == maxFrames) {
+			cont = 0;
+			frames++; 
+		}
+		
+		if(frames == maxFrames)
+			frames = 0;
+		
+		System.out.println(frames);
+		
 		if(right && World.isFree((int)(x+speed),this.getY())) {
 			x+=speed;
 			lastDir = 1;
@@ -99,14 +123,43 @@ public class Player extends Entity{
 	
 	public void render(Graphics g){
 		
-		if(lastDir == 1) {
-			g.drawImage(sprite_right,this.getX() - Camera.x,this.getY() - Camera.y,null);
-		}else if(lastDir == 2){
-			g.drawImage(sprite_left,this.getX() - Camera.x,this.getY() - Camera.y,null);
-		}else if(lastDir == 3){
-			g.drawImage(sprite_up,this.getX() - Camera.x,this.getY() - Camera.y,null);
-		}else if(lastDir == 4){
-			g.drawImage(sprite_down,this.getX() - Camera.x,this.getY() - Camera.y,null);
+		if(!moved) {
+			if(lastDir == 1) {
+				g.drawImage(sprite_right,this.getX() - Camera.x,this.getY() - Camera.y,null);
+			}else if(lastDir == 2){
+				g.drawImage(sprite_left,this.getX() - Camera.x,this.getY() - Camera.y,null);
+			}else if(lastDir == 3){
+				g.drawImage(sprite_up,this.getX() - Camera.x,this.getY() - Camera.y,null);
+			}else if(lastDir == 4){
+				g.drawImage(sprite_down,this.getX() - Camera.x,this.getY() - Camera.y,null);
+			}
 		}
+		
+		if(right) {
+			if(frames < maxFrames/2)
+				g.drawImage(sprite_right_eat,this.getX() - Camera.x,this.getY() - Camera.y,null);
+			else
+				g.drawImage(sprite_right,this.getX() - Camera.x,this.getY() - Camera.y,null);
+			
+		}else if(left){
+			if(frames < maxFrames/2)
+				g.drawImage(sprite_left_eat,this.getX() - Camera.x,this.getY() - Camera.y,null);
+			else
+				g.drawImage(sprite_left,this.getX() - Camera.x,this.getY() - Camera.y,null);
+				
+		}else if(up){
+			if(frames < maxFrames/2)
+				g.drawImage(sprite_up_eat,this.getX() - Camera.x,this.getY() - Camera.y,null);
+			else
+				g.drawImage(sprite_up,this.getX() - Camera.x,this.getY() - Camera.y,null);
+			
+		}else if(down){
+			if(frames < maxFrames/2)
+				g.drawImage(sprite_down_eat,this.getX() - Camera.x,this.getY() - Camera.y,null);
+			else
+				g.drawImage(sprite_down,this.getX() - Camera.x,this.getY() - Camera.y,null);
+			
+		}
+				
 	}
 }

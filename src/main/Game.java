@@ -165,21 +165,22 @@ public class Game extends Canvas implements Runnable,KeyListener,MouseListener,M
 		if(e.getKeyCode() == KeyEvent.VK_RIGHT ||
 				e.getKeyCode() == KeyEvent.VK_D){
 			player.right = true;
+			player.moved = true;
 		}else if(e.getKeyCode() == KeyEvent.VK_LEFT ||
 				e.getKeyCode() == KeyEvent.VK_A){
 			player.left = true;
+			player.moved = true;
 		}
 		
 		if(e.getKeyCode() == KeyEvent.VK_UP ||
 				e.getKeyCode() == KeyEvent.VK_W){
 			player.up = true;
+			player.moved = true;
 			
 		}else if(e.getKeyCode() == KeyEvent.VK_DOWN ||
 				e.getKeyCode() == KeyEvent.VK_S) {
 			player.down = true;
-			
-			
-			
+			player.moved = true;
 		}
 	
 	}
@@ -189,17 +190,21 @@ public class Game extends Canvas implements Runnable,KeyListener,MouseListener,M
 		if(e.getKeyCode() == KeyEvent.VK_RIGHT ||
 				e.getKeyCode() == KeyEvent.VK_D){
 			player.right = false;
+			player.moved = false;
 		}else if(e.getKeyCode() == KeyEvent.VK_LEFT ||
 				e.getKeyCode() == KeyEvent.VK_A){
 			player.left = false;
+			player.moved = false;
 		}
 		
 		if(e.getKeyCode() == KeyEvent.VK_UP ||
 				e.getKeyCode() == KeyEvent.VK_W){
 			player.up = false;
+			player.moved = false;
 		}else if(e.getKeyCode() == KeyEvent.VK_DOWN ||
 				e.getKeyCode() == KeyEvent.VK_S) {
 			player.down = false;
+			player.moved = false;
 		}
 		
 	}
