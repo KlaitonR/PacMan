@@ -133,32 +133,33 @@ public class Player extends Entity{
 			}else if(lastDir == 4){
 				g.drawImage(sprite_down,this.getX() - Camera.x,this.getY() - Camera.y,null);
 			}
-		}
+		}else {
 		
-		if(right) {
-			if(frames < maxFrames/2)
-				g.drawImage(sprite_right_eat,this.getX() - Camera.x,this.getY() - Camera.y,null);
-			else
-				g.drawImage(sprite_right,this.getX() - Camera.x,this.getY() - Camera.y,null);
-			
-		}else if(left){
-			if(frames < maxFrames/2)
-				g.drawImage(sprite_left_eat,this.getX() - Camera.x,this.getY() - Camera.y,null);
-			else
-				g.drawImage(sprite_left,this.getX() - Camera.x,this.getY() - Camera.y,null);
+			if(right) {
+				if(frames < maxFrames/2)
+					g.drawImage(sprite_right_eat,this.getX() - Camera.x,this.getY() - Camera.y,null);
+				else
+					g.drawImage(sprite_right,this.getX() - Camera.x,this.getY() - Camera.y,null);
 				
-		}else if(up){
-			if(frames < maxFrames/2)
-				g.drawImage(sprite_up_eat,this.getX() - Camera.x,this.getY() - Camera.y,null);
-			else
-				g.drawImage(sprite_up,this.getX() - Camera.x,this.getY() - Camera.y,null);
-			
-		}else if(down){
-			if(frames < maxFrames/2)
-				g.drawImage(sprite_down_eat,this.getX() - Camera.x,this.getY() - Camera.y,null);
-			else
-				g.drawImage(sprite_down,this.getX() - Camera.x,this.getY() - Camera.y,null);
-			
+			}else if(left){
+				if(frames < maxFrames/2)
+					g.drawImage(sprite_left_eat,this.getX() - Camera.x,this.getY() - Camera.y,null);
+				else
+					g.drawImage(sprite_left,this.getX() - Camera.x,this.getY() - Camera.y,null);
+					
+			}else if(up){
+				if(frames < maxFrames/2)
+					g.drawImage(sprite_up_eat,this.getX() - Camera.x,this.getY() - Camera.y,null);
+				else
+					g.drawImage(sprite_up,this.getX() - Camera.x,this.getY() - Camera.y,null);
+				
+			}else if(down){
+				if(frames < maxFrames/2)
+					g.drawImage(sprite_down_eat,this.getX() - Camera.x,this.getY() - Camera.y,null);
+				else
+					g.drawImage(sprite_down,this.getX() - Camera.x,this.getY() - Camera.y,null);
+				
+			}
 		}
 				
 	}
